@@ -13,7 +13,7 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ page import="guestbook.Greeting" %>
+<%@ page import="guestbook.BlogPost" %>
 
 <html>
 
@@ -29,15 +29,15 @@
 
 <%
 
-    String guestbookName = request.getParameter("guestbookName");
+    String blogName = request.getParameter("blogName");
 
-    if (guestbookName == null) {
+    if (blogName == null) {
 
-        guestbookName = "default";
+        blogName = "Dog Blog";
 
     }
 
-    pageContext.setAttribute("guestbookName", guestbookName);
+    pageContext.setAttribute("blogName", blogName);
 
     UserService userService = UserServiceFactory.getUserService();
 
@@ -75,18 +75,18 @@ to include your name with greetings you post.</p>
 
 <%
 
-	ObjectifyService.register(Greeting.class);
+	ObjectifyService.register(BlogPost.class);
 
-	List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();   
+	List<BlogPost> blogPosts = ObjectifyService.ofy().load().type(BlogPost.class).list();   
 
-	Collections.sort(greetings); 
+	Collections.sort(blogPosts); 
 	
 
-    if (greetings.isEmpty()) {
+    if (blogPosts.isEmpty()) {
 
         %>
 
-        <p>Guestbook '${fn:escapeXml(guestbookName)}' has no messages.</p>
+        <p>Our blog '${fn:escapeXml(blogName)}' has no messages.</p>
 
         <%
 
@@ -94,17 +94,25 @@ to include your name with greetings you post.</p>
 
         %>
 
-        <p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
+        <p>Messages in Guestbook '${fn:escapeXml(blogName)}'.</p>
 
         <%
 
-        for (Greeting greeting : greetings) {
+        for (BlogPost blogPost : blogPosts) {
 
-            pageContext.setAttribute("greeting_content",
+			pageContext.setAttribute("blog_date", blogPost.getDate()); 
+			
+            %>
 
-                                     greeting.getContent());
+                <p>Posted on <b>${fn:escapeXml(blog_date)}</b></p>
 
-            if (greeting.getUser() == null) {
+            <%
+                
+            pageContext.setAttribute("blog_content",
+
+                                     blogPost.getContent());
+
+            if (blogPost.getUser() == null) {
 
                 %>
 
@@ -114,13 +122,13 @@ to include your name with greetings you post.</p>
 
             } else {
 
-                pageContext.setAttribute("greeting_user",
+                pageContext.setAttribute("blog_user",
 
-                                         greeting.getUser());
+                                         blogPost.getUser());
 
                 %>
 
-                <p><b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:</p>
+                <p><b>${fn:escapeXml(blog_user.nickname)}</b> wrote:</p>
 
                 <%
 
@@ -128,7 +136,7 @@ to include your name with greetings you post.</p>
 
             %>
 
-            <blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+            <blockquote>${fn:escapeXml(blog_content)}</blockquote>
 
             <%
 
@@ -146,7 +154,7 @@ to include your name with greetings you post.</p>
 
       <div><input type="submit" value="Post Greeting" /></div>
 
-      <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
+      <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 
     </form>
 

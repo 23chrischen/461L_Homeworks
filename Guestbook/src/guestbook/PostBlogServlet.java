@@ -26,13 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
 
-/*static {
-
-    ObjectifyService.register(Greeting.class);
-
-}*/
-
-public class OfySignGuestbookServlet extends HttpServlet {
+public class PostBlogServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
 
@@ -42,29 +36,15 @@ public class OfySignGuestbookServlet extends HttpServlet {
 
         User user = userService.getCurrentUser();
 
- 
-
-        // We have one entity group per Guestbook with all Greetings residing
-
-        // in the same entity group as the Guestbook to which they belong.
-
-        // This lets us run a transactional ancestor query to retrieve all
-
-        // Greetings for a given Guestbook.  However, the write rate to each
-
-        // Guestbook should be limited to ~1/second.
-
         String content = req.getParameter("content");
+        
+        String title = "Fix title later"; 
 
-        Greeting greeting = new Greeting(user, content);
+        BlogPost blogPost = new BlogPost(user, title, content);
 
-        ObjectifyService.ofy().save().entity(greeting).now();
- 
-        //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        ObjectifyService.ofy().save().entity(blogPost).now();
 
-        //datastore.put(greeting);
-
-        resp.sendRedirect("/ofyguestbook.jsp?guestbookName=" + greeting.getUser());
+        resp.sendRedirect("/blog.jsp?blogName=" + blogPost.getUser());
 
     }
 

@@ -1,4 +1,3 @@
-
 package guestbook;
 
  
@@ -15,7 +14,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 
  
 
-public class GuestbookServlet extends HttpServlet {
+public class BlogServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)
 

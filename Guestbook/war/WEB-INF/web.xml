@@ -14,7 +14,7 @@
 
         <servlet-name>guestbook</servlet-name>
 
-        <servlet-class>guestbook.GuestbookServlet</servlet-class>
+        <servlet-class>guestbook.BlogServlet</servlet-class>
 
     </servlet>
 
@@ -27,11 +27,11 @@
     </servlet-mapping>
     
 
-        <servlet>
+    <servlet>
 
         <servlet-name>ofysign</servlet-name>
 
-        <servlet-class>guestbook.OfySignGuestbookServlet</servlet-class>
+        <servlet-class>guestbook.PostBlogServlet</servlet-class>
 
     </servlet>
 
@@ -62,7 +62,7 @@
 
 	<welcome-file-list>
 
-        <welcome-file>ofyguestbook.jsp</welcome-file>
+        <welcome-file>blog.jsp</welcome-file>
 
     </welcome-file-list>
 
