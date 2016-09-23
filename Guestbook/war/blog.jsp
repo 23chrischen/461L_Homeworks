@@ -74,10 +74,10 @@
 
     </div>
     <div>
-        <form action="/CronServlet" method="post">
+        <form action="/EmailSubscription" method="post">
             <div align="center">
                 <br>
-                    <input type="Email" name="title" cols="30" placeholder="Email">
+                    <input type="Email" name="email" cols="30" placeholder="Email">
                             </div>
                             <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
                             <div align="center">

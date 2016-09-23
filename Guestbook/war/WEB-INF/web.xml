@@ -61,6 +61,22 @@
      <url-pattern>/SendEmail</url-pattern>
  </servlet-mapping>
 
+    <servlet>
+
+        <servlet-name>EmailSubscription</servlet-name>
+
+        <servlet-class>guestbook.EmailSubscriptionServlet</servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+
+        <servlet-name>EmailSubscription</servlet-name>
+
+        <url-pattern>/EmailSubscription</url-pattern>
+
+      </servlet-mapping>
+  
     
     <filter>
 
