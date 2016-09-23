@@ -12,11 +12,13 @@ public class SendEmail extends HttpServlet{
 	  public void doGet(HttpServletRequest request, HttpServletResponse response)
 	      throws ServletException, IOException
 	  {
+		  
+		  System.out.println("Tries to send an email."); 
 	      // Recipient email.
 	      String to = "pascalequeralt@gmail.com";
 	 
 	      // Sender's email ID needs to be mentioned
-	      String from = "dogblog@dogblog.com";
+	      String from = "pascalequeralt@gmail.com";
 	 
 	      // Assuming you are sending email from localhost
 	      String host = "localhost";

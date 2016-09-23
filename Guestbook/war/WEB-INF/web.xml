@@ -51,15 +51,16 @@
 
       </servlet-mapping>
       
-     <servlet>
-	     <servlet-name>SendEmail</servlet-name>
-	     <servlet-class>SendEmail</servlet-class>
-	 </servlet>
-	 
-	 <servlet-mapping>
-	     <servlet-name>SendEmail</servlet-name>
-	     <url-pattern>/SendEmail</url-pattern>
-	 </servlet-mapping>
+       <servlet>
+     <servlet-name>SendEmail</servlet-name>
+     <servlet-class>guestbook.SendEmail</servlet-class>
+ </servlet>
+ 
+ <servlet-mapping>
+     <servlet-name>SendEmail</servlet-name>
+     <url-pattern>/SendEmail</url-pattern>
+ </servlet-mapping>
+
     
     <filter>
 
