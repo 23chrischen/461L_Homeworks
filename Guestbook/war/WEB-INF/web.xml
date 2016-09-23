@@ -26,6 +26,14 @@
 
     </servlet-mapping>
     
+    <servlet>
+		<servlet-name>CronServlet</servlet-name>
+		<servlet-class>guestbook.CronServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CronServlet</servlet-name>
+		<url-pattern>/cron/mycronjob</url-pattern>
+	</servlet-mapping>
 
     <servlet>
 
@@ -42,7 +50,16 @@
         <url-pattern>/ofysign</url-pattern>
 
       </servlet-mapping>
-  
+      
+     <servlet>
+	     <servlet-name>SendEmail</servlet-name>
+	     <servlet-class>SendEmail</servlet-class>
+	 </servlet>
+	 
+	 <servlet-mapping>
+	     <servlet-name>SendEmail</servlet-name>
+	     <url-pattern>/SendEmail</url-pattern>
+	 </servlet-mapping>
     
     <filter>
 

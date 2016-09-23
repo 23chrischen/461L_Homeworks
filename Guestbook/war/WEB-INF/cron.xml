@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+	<cron>
+		<url>/cron/mycronjob</url>
+		<description>Email subscribers daily at 5pm</description>
+		<schedule>every 1 minutes</schedule>
+	</cron>
+</cronentries>
