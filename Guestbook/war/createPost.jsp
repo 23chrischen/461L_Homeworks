@@ -37,11 +37,17 @@
 				Blog Post Title:<br>
 				<input type="text" name="title" cols="30"><br>
 				Post Content:<br>
-				<textarea name="content" rows="3" cols="60"></textarea>
+				<textarea name="content" rows="20" cols="65"></textarea>
 			</div>
-			<div align="center"><input type="submit" value="Post Blog"/></div>
-			
 			<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
+			
+			<div align="center" class="post-cancel">
+			<div id="post-cancel"><a href="/blog.jsp"><button type="button">Cancel</button></a></div>
+			
+			<div id="post-cancel"><input type="submit" value="Post Blog"/></div>
+			
+			</div>
+			
 		</form>
 	</body>
 </html>

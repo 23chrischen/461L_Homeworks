@@ -55,3 +55,11 @@ input{
 input:hover{
 	background: #e7e7e7;
 }
+
+.post-cancel{
+	width: 100%;  
+}
+
+#post-cancel{
+	display:inline;
+}
