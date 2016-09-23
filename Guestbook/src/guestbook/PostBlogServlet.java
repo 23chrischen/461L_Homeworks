@@ -37,8 +37,11 @@ public class PostBlogServlet extends HttpServlet {
         User user = userService.getCurrentUser();
 
         String content = req.getParameter("content");
+        String title = req.getParameter("title");
         
-        String title = "Fix title later"; 
+        if (title.equals("")) {
+        	title = "Untitled";
+        }
 
         BlogPost blogPost = new BlogPost(user, title, content);
 

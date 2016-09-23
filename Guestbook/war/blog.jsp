@@ -32,27 +32,52 @@
     %>
 
     <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>"><button>Sign Out</button></a>
-
+    <a href="/createPost.jsp"><button>Create Post</button></a>
 <%
     } else {
 %>
 	
 	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button>Sign in</button></a>
+    <button>Login to create post</button>
 	
 <%
     }
 %>
 
-  <input type="submit" id="createpost" value="Create Post"/>
+  <%
+  	String numStr = request.getParameter("numPosts");
+  	int numPosts = 4; // Default num posts to show
+  	if(numStr != null) {
+  		try {
+			numPosts = Integer.parseInt(numStr);
+  		} catch (Exception e) {
+  			numPosts = -1;
+  		}
+  	}
+  	int showMore = (numPosts <= 0 ? 1 : numPosts*2);
+  	int showLess = (numPosts <= 1 ? 1 : numPosts/2);
+  %>
   <button>Subscribe</button>
   <button>Unsubscribe</button>
+  <a href="/blog.jsp?numPosts=<%= showMore%>">
+  	<button>Show More</button>
+  </a>
+  <a href="/blog.jsp?numPosts=<%= showLess%>">
+  	<button>Show Less</button>
+  </a>
+  <a href="/blog.jsp?numPosts=-1">
+  	<button>Show All</button>
+  </a>
+  
   </div>
 
 <%
 	ObjectifyService.register(BlogPost.class);
 	List<BlogPost> blogPosts = ObjectifyService.ofy().load().type(BlogPost.class).list();   
-	Collections.sort(blogPosts); 
-	
+	Collections.sort(blogPosts);
+	if(numPosts > 0) {
+		blogPosts = blogPosts.subList(0, numPosts);
+	}
     if (blogPosts.isEmpty()) {
         %>
 
@@ -85,14 +110,6 @@
         }
     }
 %>
-
-
-
-    <form action="/ofysign" method="post">
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Post Blog" /></div>
-      <input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
-    </form>
 
   </body>
 </html>
