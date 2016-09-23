@@ -34,10 +34,8 @@
 		</div>
 		<form action="/ofysign" method="post">
 			<div align="center">
-				Blog Post Title:<br>
-				<input type="text" name="title" cols="30"><br>
-				Post Content:<br>
-				<textarea name="content" rows="20" cols="65"></textarea>
+				<input type="text" name="title" cols="30" placeholder="Post Title"><br>
+				<textarea name="content" rows="20" cols="65" placeholder="Post Content"></textarea>
 			</div>
 			<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 			
