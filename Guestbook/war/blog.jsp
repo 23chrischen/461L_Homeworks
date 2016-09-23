@@ -31,13 +31,13 @@
       pageContext.setAttribute("user", user);
     %>
 
-    <button><a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">Sign Out</a></button>
+    <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>"><button>Sign Out</button></a>
 
 <%
     } else {
 %>
 	
-	<button><a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a></button>
+	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>"><button>Sign in</button></a>
 	
 <%
     }
