@@ -1,10 +1,2 @@
 # 461L_Homeworks
-Repo for 461L Homeworks
-
-woot testing git
-asdf
-woot testing github
-2nd change, will be squashed
-
-
-HI - Pascale
+Repo for 461L Homework - create a website that serves as a guestbook for visitors to leave messages
